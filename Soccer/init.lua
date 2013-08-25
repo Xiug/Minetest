@@ -1,4 +1,4 @@
--- mod created by Diego Martínez is amended by xiug
+
 
 local BALL_PUSH_CHECK_INTERVAL = 0.1
 
@@ -175,7 +175,7 @@ minetest.register_entity("soccer:green_ball", {
 	on_step = function(self, dtime)
 		self.timer = self.timer + dtime
 		if self.timer >= GREEN_BALL_PUSH_CHECK_INTERVAL then
-			self.object:setacceleration({x=0, y=-math.random(0,150), z=0})
+			self.object:setacceleration({x=0,math.random(0,9), y=-math.random(0,150), z=0,math.random(0,9)})
 			self.timer = 0
 			local vel = self.object:getvelocity()
 			local p = self.object:getpos();
@@ -244,7 +244,7 @@ minetest.register_craftitem("soccer:green_ball_item", {
 		local pos = pointed_thing.above
 		--pos = { x=pos.x+0.5, y=pos.y, z=pos.z+0.5 }
 		local ent = minetest.env:add_entity(pos, "soccer:green_ball")
-		ent:setvelocity({x=0, y=-math.random(0,50), z=0})
+		ent:setvelocity({x=0,math.random(0,9), y=-math.random(0,50), z=0,math.random(0,9)})
 		itemstack:take_item()
 		return itemstack
 	end,
